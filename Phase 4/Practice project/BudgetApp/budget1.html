@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget App</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+  body {background-color: rgb(13, 164, 252);}
+  h1   {color: rgb(4, 6, 26);}
+  p{color: rgb(54, 18, 216);}
+  </style>
+  <style>
+    strong {text-align: center;}
+    head {text-align: center;}
+    div {text-align: center; font-size: large}
+    br {text-align: center;}
+    body {text-align: center;}
+    span, input {margin: 5px;}
+    button{display:inline-block;}
+</style>
+<body>
+  <h3><u>Budget App</u></h3>
+
+  <div class="budget-section">
+
+      <div class="budget col col-md col-sm">
+        <h2>Budget</h2>
+        <img src="images\money-bag.png" width="80" alt="" />
+        <p class="amount">$ <span id="budgetAmount">0</span></p>
+      </div>
+
+      <div class="expenses col col-md col-sm">
+        <h2>Expenses</h2>
+        <img src="imageS/accounting.png" width="100" alt="" />
+        <p class="exp-amount">$ <span id="expensesAmount">0</span></p>
+      </div>
+
+      <div class="balance col col-md col-sm">
+        <h2>Balance</h2>
+        <img src="images/law.jpg" width="120" alt="" />
+        <p class="amount bala">$ <span id="balanceAmount">0</span></p>
+      </div>
+     
+      </div>
+    </div>
+    <div class="budget-form" id="budgetform">
+        <form id="addForm">
+           <label for=""> Make a Budget</label> <br />
+           <input type="number" id="number" /> <br />
+           <button type="submit">Add Budget</button>
+
+         </form>
+    </div>
+    <script>
+        const amountInput = document.getElementById("number");
+const addForm = document.getElementById("addForm");
+
+const budgetAmount = document.getElementById("budgetAmount");
+const balanceAmount = document.getElementById("balanceAmount");
+
+function getBudgetAmount(amount) {
+if (!amount) {
+  amountInput.style.border = "1px solid #b80c09";
+  amountInput.placeholder = "input can not be empty";
+  amountInput.style.color = "#b80c09";
+  setTimeout(() => {
+    amountInput.style.color = "#495057";
+    amountInput.style.border = "1px solid gray";
+  }, 3000);
+} else {
+  budgetAmount.innerText = amount;
+  balanceAmount.innerText = amount;
+  expenseForm.style.display = "block";
+  budgetform.style.display = "none";
+  editForm.style.display = "none";
+  amountInput.value = "";
+}
+}
+
+addForm.addEventListener("submit", (e) => {
+e.preventDefault();
+getBudgetAmount(amountInput.value);
+});
+    
+     var map = new Map();
+
+//add exenses using map
+function addexp() {
+    map.set("cloths", 5000);
+    map.set("TV", 4500);
+    map.set("fridge", 3500);
+    map.set("bag", 1000);
+    map.set("mobilecover", 400);
+    map.set("cooler", 5500);
+    console.log("Size of the map object: " + map.size);
+
+}
+
+function showexp() {
+    console.log("Expenses Function executed");
+    map.forEach((value, key) => {
+        console.log(`${key}: ${value}`)
+    })
+}
+
+function sumexp() {
+
+    let sum = 0;
+    console.log("Sum of Expenses Function executed");
+
+    map.forEach(value => {
+        sum += value;
+    });
+
+    console.log(sum);
+}
+
+function remove() {
+    console.log("Remove of Expenses Function executed");
+    console.log(map.delete('books'));
+    
+    console.log("Size of the map object: " + map.size);
+
+    console.log("after removing of Expenses");
+    map.forEach((value, key) => {
+        console.log(`${key}: ${value}`)
+    })
+
+}
+
+//calling function
+addexp();
+showexp();
+sumexp();
+remove();
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+</body>
+</html>
